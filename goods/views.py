@@ -16,7 +16,7 @@ def catalog(request):
             },
             {
                 "image": "deps/images/goods/jeans1.jpg",
-                "name": "Джинсы",
+                "name": "Джинсы-карго",
                 "description": "Карго.",
                 "price": 93.00,
             },
