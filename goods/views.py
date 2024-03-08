@@ -1,32 +1,17 @@
 from django.shortcuts import render
 
 import goods
+from goods.models import Products
 
 
-# Create your views here.
+# Create your views here. Список товаров на сайте
 def catalog(request):
+
+    goods = Products.objects.all()
+
     context = {
         "title": "Магазин - Каталог",
-        "goods": [
-            {
-                "image": "deps/images/goods/t-shirt.jpg",
-                "name": "Белая футболка",
-                "description": "Базовая белая футболка.",
-                "price": 150.00,
-            },
-            {
-                "image": "deps/images/goods/jeans1.jpg",
-                "name": "Джинсы-карго",
-                "description": "Карго.",
-                "price": 93.00,
-            },
-            {
-                "image": "deps/images/goods/shoes.jpg",
-                "name": "Белые кроссовки",
-                "description": "Повседневные белые кроссовки.",
-                "price": 670.00,
-            },
-        ],
+        "goods": goods,
     }
     return render(request, "goods/catalog.html", context)
 
