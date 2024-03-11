@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import get_list_or_404, render
 
 import goods
@@ -5,17 +6,24 @@ from goods.models import Products
 
 
 # Create your views here. Список товаров на сайте
+# goods - Это QuerySet
 def catalog(request, category_slug):
+
+    page = request.GET.get('page', 1)
+
     if category_slug == 'all':
         goods = Products.objects.all()
     else:
         goods =get_list_or_404(Products.objects.filter(category__slug = category_slug))
     
-
+    # Отображать сколько товаров выводить на одной странице, возможна ошибка с пагинацией 
+    paginator = Paginator(goods, 2)
+    current_page = paginator.page(int(page))
 
     context = {
         "title": "Магазин - Каталог",
-        "goods": goods,
+        "goods": current_page,
+        "slug_url": category_slug,
     }
     return render(request, "goods/catalog.html", context)
 
