@@ -8,16 +8,25 @@ from goods.models import Products
 # Create your views here. Список товаров на сайте
 # goods - Это QuerySet
 def catalog(request, category_slug):
-
+    
     page = request.GET.get('page', 1)
+    on_sale = request.GET.get('on_sale', None)
+    order_by = request.GET.get('order_by', None)
 
     if category_slug == 'all':
         goods = Products.objects.all()
     else:
         goods =get_list_or_404(Products.objects.filter(category__slug = category_slug))
     
+    #Для фильтрации на сайте
+    if on_sale:
+        goods = goods.filter(discount__gt = 0)
+
+    if order_by and order_by!= "default":
+        goods = goods.order_by(order_by)
+
     # Отображать сколько товаров выводить на одной странице, возможна ошибка с пагинацией 
-    paginator = Paginator(goods, 2)
+    paginator = Paginator(goods, 3)
     current_page = paginator.page(int(page))
 
     context = {
