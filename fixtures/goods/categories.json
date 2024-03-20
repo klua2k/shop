@@ -1,7 +1,7 @@
 [
     {
         "model": "goods.categories",
-        "pk": 5,
+        "pk": 4,
         "fields": {
             "name": "Все товары",
             "slug": "all"
@@ -9,7 +9,7 @@
     },
     {
         "model": "goods.categories",
-        "pk": 6,
+        "pk": 5,
         "fields": {
             "name": "Футболки",
             "slug": "futbolki"
@@ -17,18 +17,10 @@
     },
     {
         "model": "goods.categories",
-        "pk": 7,
+        "pk": 6,
         "fields": {
             "name": "Джинсы",
             "slug": "dzhinsy"
-        }
-    },
-    {
-        "model": "goods.categories",
-        "pk": 8,
-        "fields": {
-            "name": "Обувь",
-            "slug": "obuv"
         }
     }
 ]

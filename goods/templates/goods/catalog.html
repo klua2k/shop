@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% load goods_tags %} 
 
@@ -45,8 +45,15 @@
         </form>
     </div>
 
-    {% for product in goods %}
+    {% if request.GET.q %}
+    <h3 class "mt-4" style="color: white;"> Результаты поиска по запросу {{ request.GET.q }}</h3>
+    {% if not goods  %}
+    <h2 class "mt-4" style="color: white;"> По запросу ничего не найдено</h2>
+    {% endif %}
+    {% endif %}
+   
     
+    {% for product in goods %}
         <div class="col-lg-4 col-md-6 p-4">
             <div class="card border-primary rounded custom-shadow">
                 {% if product.image %}
@@ -86,6 +93,7 @@
 
 </div>
 <!-- Пагинация -->
+{% if goods %}
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center my-4">
         <div class="custom-shadow d-flex">
@@ -110,6 +118,7 @@
         </div>
     </ul>
 </nav>
+{% endif %}
 {% endblock  %}
 
 {% block footer %}

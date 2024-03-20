@@ -1,0 +1,30 @@
+[
+    {
+        "model": "goods.products",
+        "pk": 3,
+        "fields": {
+            "name": "Белая футболка",
+            "slug": "belaya-futbolka",
+            "description": "Базовая белая футболка",
+            "image": "goods_images/t-shirt_Jm4FhP9.jpg",
+            "price": "100.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 5
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 4,
+        "fields": {
+            "name": "Джинсы-Карго",
+            "slug": "dzhinsy-kargo",
+            "description": "Карго.",
+            "image": "goods_images/jeans_dj9whoy.webp",
+            "price": "150.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 6
+        }
+    }
+]
