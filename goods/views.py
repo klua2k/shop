@@ -27,6 +27,7 @@ def catalog(request, category_slug=None):
         goods = goods.filter(discount__gt = 0)
 
     if order_by and order_by!= "default":
+        goods = Products.objects.filter(category__slug=category_slug)
         goods = goods.order_by(order_by)
 
     # Отображать сколько товаров выводить на одной странице, возможна ошибка с пагинацией 
